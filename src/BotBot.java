@@ -6,20 +6,15 @@ public class BotBot {
     static Scanner s = new Scanner(System.in);
 
     public static void main(String[] args) {
-        String name1;
-        String name2;
-        int age;
-        int attempts;
-
-        name1 = greeting();
-        name2 = nameAgain();
-        age = guessAge();
+        String name1 = greeting();
+        String name2 = nameAgain();
+        int age = guessAge();
         exactAge();
-        count();
-        attempts = quiz();
+        int num = count();
+        int attempts = quiz();
         daysOfTheWeek();
 
-        reminisce(name1, name2, age, attempts);
+        reminisce(name1, name2, age, num, attempts);
     }
     public static String greeting() {
         System.out.println("Hi there, I'm bot-bot! What's your name?");
@@ -83,7 +78,7 @@ public class BotBot {
         return age;
     }
 
-    public static void count() {
+    public static int count() {
         System.out.println("I'm also great at counting.");
         System.out.println("Go ahead and give me a number and I'll count to it from zero!");
         int num = Integer.parseInt(s.nextLine());
@@ -103,6 +98,8 @@ public class BotBot {
         } else {
             System.out.println("Fine, message received, no counting...");
         }
+
+        return num;
     }
 
     public static int quiz(){
@@ -174,7 +171,7 @@ public class BotBot {
         }
     }
 
-    public static void reminisce(String name1, String name2, int age, int attempts){
+    public static void reminisce(String name1, String name2, int age, int num, int attempts){
         System.out.println("You know, we've had a lot of fun, " + name2);
         System.out.println("It feels like it was just moments ago that we met.");
         System.out.println("First I thought your name was " + name1 + " but I wasn't sure, and then you told me it was " + name2 + "(...)");
@@ -183,7 +180,7 @@ public class BotBot {
         System.out.println("Did you know exactly how old you were before?");
         System.out.println("I was just born recently so it's not hard for me to keep track of at all! (...)");
         s.next();
-        System.out.println("We had a fun little quiz, and it only took you " + attempts + " to get the right answer.");
+        System.out.println("I counted to " + num + " for you, I asked you a Java question, and it only took you " + attempts + " to get the right answer.");
         System.out.println("And then you listened to me talk about the days of the week...");
         System.out.println("Even though I haven't even lived through all of them yet! (...)");
         s.next();
@@ -195,6 +192,7 @@ public class BotBot {
         } else if (reply.equals("n")) {
             System.out.println("Oh...well then.");
         }
+        System.out.println("Next time we meet, I'll be even smarter. And you'll be the one doing my bidding!");
         System.out.println("Goodbye!");
     }
 }
