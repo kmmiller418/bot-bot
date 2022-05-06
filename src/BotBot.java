@@ -9,9 +9,11 @@ public class BotBot {
         String name2;
         int age;
 
-        name1 = greeting(s);
-        name2 = nameAgain(s);
-        age = guessAge(s);
+//        name1 = greeting(s);
+//        name2 = nameAgain(s);
+//        age = guessAge(s);
+//        count(s);
+        quiz(s);
     }
     public static String greeting(Scanner s) {
         System.out.println("Hi there, I'm bot-bot! What's your name?");
@@ -53,7 +55,6 @@ public class BotBot {
         s.nextLine();
         System.out.println("Aww. If I had real feelings, I think that would be sweet. Or mean. I don't know.");
     }
-
     public static int calculateAge(Scanner s){
         System.out.println("Final question. What is your date of birth? (yyyy-mm-dd)");
         LocalDate dob = LocalDate.parse(s.nextLine());
@@ -70,6 +71,62 @@ public class BotBot {
         System.out.println("Neat, huh?");
 
         return age;
+    }
+
+    public static void count(Scanner s) {
+        System.out.println("Okay, so maybe I'm not so good at guessing, but I'm great at counting.");
+        System.out.println("Go ahead and give me a number and I'll count to it from zero!");
+        int num = s.nextInt();
+
+        if (Math.abs(num) >= 20) {
+            System.out.println("That's a lot of counting!");
+        }
+
+        if (num > 0){
+            for (int i = 0; i <= num; i++){
+                System.out.println(i);
+            }
+        } else if (num < 0) {
+            for (int i = 0; i >= num; i--){
+                System.out.println(i);
+            }
+        } else {
+            System.out.println("Fine, message received, no counting...");
+        }
+    }
+
+    public static int quiz(Scanner s){
+        int attempts = 0;
+        System.out.println("You know, I've been the one doing all the work here.");
+        System.out.println("I think it's time to turn the tables. Flip the script as they say.");
+        System.out.println("Do they say that? I don't know. I'm just a bot. Everything I say is scripted!");
+        System.out.println("Anyway. It's time to put your knowledge to the test.");
+
+        String answer = "";
+
+        while (!answer.equals("B")) {
+            System.out.println("We've been chatting a bunch today. What is the name of the package that's letting us do that?");
+            System.out.println("A: Scanner");
+            System.out.println("B: java.util");
+            System.out.println("C: input stream");
+            System.out.println("D: System.in");
+
+            answer = s.nextLine();
+            attempts++;
+            if (answer.equals("B")){
+                break;
+            }
+            System.out.println("Hmm, not quite! Try again!");
+        }
+
+        if (attempts == 1) {
+            System.out.println("Woah, you got it in one go!");
+            System.out.println("Nice job! There's no fooling you, huh?");
+        } else {
+            System.out.println("That's right! You got the answer in " + attempts + " tries.");
+        }
+
+        return attempts;
     }
 }
 
